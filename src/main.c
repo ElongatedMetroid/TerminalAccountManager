@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <unistd.h>
 
 #define MAXLEN 255
 #define ACCFILEPATH "data/accounts.txt"
@@ -31,9 +32,8 @@ void mainMenu()
     struct account *newAcc;
     newAcc = &acc;
 
-    system("clear");
     printf("Press 1 to make a newAccount:\nPress 2 to view all current accounts:\nPress 3 to exit:\n");
-    scanf("%c", i);
+    scanf("%s", i);
     if(strcmp(i, "1") == 0)
         newAccount(newAcc);
     else if(strcmp(i, "2") == 0)
@@ -42,6 +42,8 @@ void mainMenu()
         exit(0);
     else 
         printf("Invailid Expression!, Please try again!\n\n");
+
+    i[0] = '\0';
     mainMenu();
 }
 
@@ -82,11 +84,14 @@ void newAccount(struct account *pStruct)
 
         fclose(fp);
 
-        printf("\nDone!");
+        printf("\nDone!\n");
+        system("clear");
+        mainMenu();
     }   
     else
     {
         system("clear");
+        mainMenu();
     }
 }
 
@@ -97,10 +102,16 @@ void printAllAcc()
 
     fp = fopen(ACCFILEPATH, "a+");
 
+    system("clear");
+
     while((buf = fgetc(fp)) != EOF)
     {
         printf("%c", buf);
     }
+
+    sleep(5);
+
+    system("clear");
 
     fclose(fp);
     fp = NULL;
