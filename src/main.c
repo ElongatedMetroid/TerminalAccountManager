@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <string.h>
+#include <time.h>
 
 #define MAXLEN 255
+#define ACCFILEPATH "data/accounts.txt"
 
 struct account
 {
@@ -13,22 +14,41 @@ struct account
 };
 
 void newAccount(struct account *pStruct);
+void mainMenu();
+void printAllAcc();
 
 int main()
 {
-    struct account acc;
-    struct account *newAcc;
-
-    newAcc = &acc;
-
-    newAccount(newAcc);
+    mainMenu();
 
     return 0;
+}
+
+void mainMenu()
+{
+    char i[MAXLEN];
+    struct account acc;
+    struct account *newAcc;
+    newAcc = &acc;
+
+    system("clear");
+    printf("Press 1 to make a newAccount:\nPress 2 to view all current accounts:\nPress 3 to exit:\n");
+    scanf("%c", i);
+    if(strcmp(i, "1") == 0)
+        newAccount(newAcc);
+    else if(strcmp(i, "2") == 0)
+        printAllAcc();
+    else if(strcmp(i, "3") == 0)
+        exit(0);
+    else 
+        printf("Invailid Expression!, Please try again!\n\n");
+    mainMenu();
 }
 
 void newAccount(struct account *pStruct)
 {
     char temp[2];
+    fpos_t position;
 
     system("clear");
     printf("Enter your account name: ");
@@ -44,7 +64,7 @@ void newAccount(struct account *pStruct)
         printf("Writing to data/accounts.txt...\n");
         FILE *fp = NULL;
 
-        fp = fopen("data/accounts.txt", "w+");
+        fp = fopen(ACCFILEPATH, "a+");
 
         if(fp == NULL)
         {
@@ -54,15 +74,34 @@ void newAccount(struct account *pStruct)
             exit(-1);
         }
 
+        fputc('\n', fp);
         fputs(pStruct->name, fp);
+        fputc('\n', fp);
+        fputs(pStruct->dob, fp);
+        fputc('\n', fp);
 
         fclose(fp);
 
-        printf("Done!");
+        printf("\nDone!");
     }   
     else
     {
         system("clear");
-        exit(0);
     }
+}
+
+void printAllAcc()
+{
+    FILE *fp = NULL;
+    char buf;
+
+    fp = fopen(ACCFILEPATH, "a+");
+
+    while((buf = fgetc(fp)) != EOF)
+    {
+        printf("%c", buf);
+    }
+
+    fclose(fp);
+    fp = NULL;
 }
