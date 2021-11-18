@@ -9,9 +9,10 @@
 
 struct account
 {
-    char name[MAXLEN];
+    char uname[MAXLEN];
+    char rfname[MAXLEN];
+    char rlname[MAXLEN];
     char dob[MAXLEN];
-
 };
 
 void newAccount(struct account *pStruct);
@@ -43,22 +44,24 @@ void mainMenu()
     else 
         printf("Invailid Expression!, Please try again!\n\n");
 
-    i[0] = '\0';
     mainMenu();
 }
 
 void newAccount(struct account *pStruct)
 {
     char temp[2];
-    fpos_t position;
 
     system("clear");
-    printf("Enter your account name: ");
-    scanf("%s", pStruct->name);
+    printf("Enter your account username name: ");
+    scanf("%s", pStruct->uname);
+    printf("\nEnter your real first name: ");
+    scanf("%s", pStruct->rfname);
+    printf("\nEnter your real last name: ");
+    scanf("%s", pStruct->rlname);
     printf("\nEnter your account Date of Birth: ");
     scanf("%s", pStruct->dob);
 
-    printf("\nIs this correct (Y/n)? Name: %s || DOB: %s\n", pStruct->name, pStruct->dob);
+    printf("\nIs this correct (Y/n)? Username: %s || Name: %s %s || DOB: %s\n", pStruct->uname, pStruct->rfname, pStruct->rlname, pStruct->dob);
     scanf("%s", temp);
 
     if(strcmp(temp, "y") == 0 || strcmp(temp, "Y") == 0)
@@ -77,7 +80,9 @@ void newAccount(struct account *pStruct)
         }
 
         fputc('\n', fp);
-        fputs(pStruct->name, fp);
+        fputs(pStruct->uname, fp);
+        fputc('\n', fp);
+        fputs(pStruct->rfname, fp); fputc(' ', fp); fputs(pStruct->rlname, fp);
         fputc('\n', fp);
         fputs(pStruct->dob, fp);
         fputc('\n', fp);
@@ -99,6 +104,7 @@ void printAllAcc()
 {
     FILE *fp = NULL;
     char buf;
+    int i;
 
     fp = fopen(ACCFILEPATH, "a+");
 
@@ -109,7 +115,7 @@ void printAllAcc()
         printf("%c", buf);
     }
 
-    sleep(5);
+    scanf("%i", &i);
 
     system("clear");
 
