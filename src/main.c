@@ -5,7 +5,8 @@
 #include <unistd.h>
 
 #define MAXLEN 255
-#define ACCFILEPATH "data/accounts.txt"
+
+char accFilePath[MAXLEN] = "data/accounts.txt";
 
 struct account
 {
@@ -16,6 +17,7 @@ struct account
 };
 
 void newAccount(struct account *pStruct);
+void configMenu();
 void mainMenu();
 void printAllAcc();
 
@@ -33,18 +35,40 @@ void mainMenu()
     struct account *newAcc;
     newAcc = &acc;
 
-    printf("Press 1 to make a newAccount:\nPress 2 to view all current accounts:\nPress 3 to exit:\n");
+    system("clear");
+    printf("Press 1 to make a newAccount:\nPress 2 to view all current accounts:\nPress 3 to config:\nPress 4 to exit:\n");
     scanf("%s", i);
     if(strcmp(i, "1") == 0)
         newAccount(newAcc);
     else if(strcmp(i, "2") == 0)
         printAllAcc();
     else if(strcmp(i, "3") == 0)
+        configMenu();
+    else if(strcmp(i, "4") == 0)
         exit(0);
     else 
+    {
         printf("Invailid Expression!, Please try again!\n\n");
-
+        sleep(2);
+    }
     mainMenu();
+}
+
+void configMenu()
+{
+    char i[MAXLEN];
+
+    system("clear");
+    printf("Press 1 to change path to accounts text file (Not reccomended!):\nPress 2 to go back to mainMenu:\n");
+    scanf("%s", i);
+    if(strcmp(i, "1") == 0)
+    {
+        printf("Enter your NEW FILE path: ");
+        scanf("%s", accFilePath);
+        configMenu();
+    }     
+    else if(strcmp(i, "2") == 0)
+        mainMenu();         
 }
 
 void newAccount(struct account *pStruct)
@@ -69,7 +93,7 @@ void newAccount(struct account *pStruct)
         printf("Writing to data/accounts.txt...\n");
         FILE *fp = NULL;
 
-        fp = fopen(ACCFILEPATH, "a+");
+        fp = fopen(accFilePath, "a+");
 
         if(fp == NULL)
         {
@@ -106,7 +130,7 @@ void printAllAcc()
     char buf;
     int i;
 
-    fp = fopen(ACCFILEPATH, "a+");
+    fp = fopen(accFilePath, "a+");
 
     system("clear");
 
