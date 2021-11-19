@@ -9,6 +9,10 @@
         "istream": "c",
         "ostream": "c",
         "system_error": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "stdio.h": "c",
+        "config.h": "c",
+        "account.h": "c",
+        "mainmenu.h": "c"
     }
 }

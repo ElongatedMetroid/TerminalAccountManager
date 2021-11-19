@@ -8,7 +8,10 @@
                 "-Wall",
                 "-o",
                 "${workspaceFolder}/bin/app",
-                "${workspaceFolder}/src/main.c"
+                "${workspaceFolder}/src/main.c",
+                "${workspaceFolder}/src/includes/config.c",
+                "${workspaceFolder}/src/includes/account.c",
+                "${workspaceFolder}/src/includes/mainMenu.c"
             ],
             "options": {
                 "cwd": "${fileDirname}"
