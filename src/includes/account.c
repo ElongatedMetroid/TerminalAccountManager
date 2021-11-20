@@ -21,16 +21,16 @@ void newAccount(struct account *pStruct)
 
     system("clear");
     printf("Enter your account " RED "username: " RESET);
-    scanf("%s", pStruct->uname);
+    scanf("%254s", pStruct->uname);
     printf("\nEnter your " RED "real first name: " RESET);
-    scanf("%s", pStruct->rfname);
+    scanf("%254s", pStruct->rfname);
     printf("\nEnter your " RED "real last name: " RESET);
-    scanf("%s", pStruct->rlname);
+    scanf("%254s", pStruct->rlname);
     printf("\nEnter your Date of Birth: ");
-    scanf("%s", pStruct->dob);
+    scanf("%254s", pStruct->dob);
 
     printf("\nIs this correct (Y/n)? Username: %s || Name: %s %s || DOB: %s\n", pStruct->uname, pStruct->rfname, pStruct->rlname, pStruct->dob);
-    scanf("%s", temp);
+    scanf("%3s", temp);
 
     if(strcmp(temp, "y") == 0 || strcmp(temp, "Y") == 0)
     {
@@ -83,7 +83,9 @@ void printAllAcc()
         printf("%c", buf);
     }
 
-    scanf("%i", &i);
+    printf("\n\nDone! Press 1 to exit");
+
+    scanf("%3i", &i);
 
     system("clear");
 

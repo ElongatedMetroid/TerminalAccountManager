@@ -11,7 +11,7 @@ void mainMenu()
 
     system("clear");
     printf("Press 1 to make a " GRE "newAccount" RESET":\nPress 2 to " BLU "view all current accounts" RESET ":\nPress 3 to " YEL "config" RESET ":\nPress 4 to " RED "exit" RESET ":\n");
-    scanf("%s", i);
+    scanf("%3s", i);
     if(strcmp(i, "1") == 0)
         newAccount(newAcc);
     else if(strcmp(i, "2") == 0)
