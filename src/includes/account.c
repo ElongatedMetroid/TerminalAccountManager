@@ -1,3 +1,7 @@
+/*
+    Written By: Nate C
+    This handles all the functions related to accounts
+*/
 #include "account.h"
 
 struct account
@@ -16,13 +20,13 @@ void newAccount(struct account *pStruct)
     char temp[2];
 
     system("clear");
-    printf("Enter your account username name: ");
+    printf("Enter your account " RED "username: " RESET);
     scanf("%s", pStruct->uname);
-    printf("\nEnter your real first name: ");
+    printf("\nEnter your " RED "real first name: " RESET);
     scanf("%s", pStruct->rfname);
-    printf("\nEnter your real last name: ");
+    printf("\nEnter your " RED "real last name: " RESET);
     scanf("%s", pStruct->rlname);
-    printf("\nEnter your account Date of Birth: ");
+    printf("\nEnter your Date of Birth: ");
     scanf("%s", pStruct->dob);
 
     printf("\nIs this correct (Y/n)? Username: %s || Name: %s %s || DOB: %s\n", pStruct->uname, pStruct->rfname, pStruct->rlname, pStruct->dob);
@@ -38,7 +42,7 @@ void newAccount(struct account *pStruct)
         if(fp == NULL)
         {
             printf("Error in opening data/accounts.txt, try running the program again after it closes\n");
-            system("mkdir data");
+            system("cd ..;cd ..; mkdir data");
             perror("Error in opening file!");
             exit(-1);
         }

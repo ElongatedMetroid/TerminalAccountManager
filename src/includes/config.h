@@ -5,6 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "colors.h"
+#include "mainMenu.h"
+
 #define MAXLEN 255
 
 extern char accFilePath[MAXLEN];

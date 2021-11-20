@@ -8,6 +8,7 @@
 
 #include "account.h"
 #include "config.h"
+#include "colors.h"
 
 void mainMenu();
 

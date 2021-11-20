@@ -1,8 +1,8 @@
+/*
+    Written By: Nate C
+    This file is used to manage the mainMenu
+*/
 #include "mainMenu.h"
-
-//char i[MAXLEN];
-//struct account acc;
-//struct account *newAcc;
 
 void mainMenu()
 {
@@ -10,7 +10,7 @@ void mainMenu()
     char i[MAXLEN];
 
     system("clear");
-    printf("Press 1 to make a newAccount:\nPress 2 to view all current accounts:\nPress 3 to config:\nPress 4 to exit:\n");
+    printf("Press 1 to make a " GRE "newAccount" RESET":\nPress 2 to " BLU "view all current accounts" RESET ":\nPress 3 to " YEL "config" RESET ":\nPress 4 to " RED "exit" RESET ":\n");
     scanf("%s", i);
     if(strcmp(i, "1") == 0)
         newAccount(newAcc);
