@@ -9,6 +9,7 @@
 
 #include "config.h"
 #include "mainMenu.h"
+#include "ansiEscapes.h"
 
 #define MAXLEN 255
 

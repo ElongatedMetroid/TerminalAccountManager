@@ -9,6 +9,7 @@
 #include "account.h"
 #include "config.h"
 #include "colors.h"
+#include "ansiEscapes.h"
 
 void mainMenu();
 

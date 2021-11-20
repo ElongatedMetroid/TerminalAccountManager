@@ -9,7 +9,7 @@ void mainMenu()
     newAcc = &acc;
     char i[MAXLEN];
 
-    system("clear");
+    printf(CLEAR);
     printf("Press 1 to make a " GRE "newAccount" RESET":\nPress 2 to " BLU "view all current accounts" RESET ":\nPress 3 to " YEL "config" RESET ":\nPress 4 to " RED "exit" RESET ":\n");
     scanf("%3s", i);
     if(strcmp(i, "1") == 0)

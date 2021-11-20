@@ -19,7 +19,7 @@ void newAccount(struct account *pStruct)
 {
     char temp[2];
 
-    system("clear");
+    printf(CLEAR);
     printf("Enter your account " RED "username: " RESET);
     scanf("%254s", pStruct->uname);
     printf("\nEnter your " RED "real first name: " RESET);
@@ -58,12 +58,12 @@ void newAccount(struct account *pStruct)
         fclose(fp);
 
         printf("\nDone!\n");
-        system("clear");
+        printf(CLEAR);
         mainMenu();
     }   
     else
     {
-        system("clear");
+        printf(CLEAR);
         mainMenu();
     }
 }
@@ -76,18 +76,18 @@ void printAllAcc()
 
     fp = fopen(accFilePath, "a+");
 
-    system("clear");
+    printf(CLEAR);
 
     while((buf = fgetc(fp)) != EOF)
     {
         printf("%c", buf);
     }
 
-    printf("\n\nDone! Press 1 to exit");
+    printf("\n\nDone! Press 1 to exit: ");
 
     scanf("%3i", &i);
 
-    system("clear");
+    printf(CLEAR);
 
     fclose(fp);
     fp = NULL;

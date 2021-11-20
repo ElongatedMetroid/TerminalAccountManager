@@ -11,7 +11,7 @@ void configMenu()
 {
     char i[MAXLEN];
 
-    system("clear");
+    printf(CLEAR);
     printf("Press 1 to change path to accounts text file " RED "(Not reccomended!)" RESET ":\nPress 2 to " GRE "reset accounts text file path" RESET ":\nPress 3 to go back to mainMenu:\n");
     scanf("%3s", i);
     if(strcmp(i, "1") == 0)
