@@ -12,6 +12,7 @@
 #define MAXLEN 255
 
 extern char accFilePath[MAXLEN];
+extern char configFilePath[MAXLEN];
 
 void configMenu();
 

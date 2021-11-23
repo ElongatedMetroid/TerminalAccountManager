@@ -1,11 +1,12 @@
 /*
     Written By: Nate C
     This file contains all the config options for the program
-    The options it provides can also be edited in data/config.txt
+    The options it provides can also be edited in data/config
 */
 #include "config.h"
 
-char accFilePath[MAXLEN] = "../../data/accounts";
+char accFilePath[MAXLEN] = "../data/accounts";
+char configFilePath[MAXLEN] = "../data/config";
 
 void configMenu()
 {
@@ -18,10 +19,46 @@ void configMenu()
     {
         printf("Enter your NEW FILE path: ");       //Write PATH to config
         scanf("%254s", accFilePath);
+
+        FILE *fp;
+        fp = fopen(configFilePath, "w+");
+
+        if(fp == NULL)
+        {
+            printf("Error in opening ../data/config\n");
+            system("cd ..; mkdir data");
+            perror("Error in opening file!");
+            exit(-1);
+        }
+
+        fputs(accFilePath, fp);
+
+        fclose(fp);
+        fp = NULL;
+
         configMenu();
     }     
     else if(strcmp(i, "2") == 0)
-        strcpy(accFilePath, "../../data/accounts");
+    {
+        FILE *fp;
+        fp = fopen(configFilePath, "w+");
+        if(fp == NULL)
+        {
+            printf("Error in opening ../data/config\n");
+            system("cd ..; mkdir data");
+            perror("Error in opening file!");
+            exit(-1);
+        }
+
+        strcpy(accFilePath, "../data/accounts");
+
+        fputs(accFilePath, fp);
+
+        fclose(fp);
+        fp = NULL;
+
+        configMenu();
+    }
     else if(strcmp(i, "3") == 0)
         mainMenu();         
 }

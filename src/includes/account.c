@@ -23,11 +23,11 @@ void newAccount(struct account *pStruct)
     printf("Enter your account " RED "username: " RESET);
     scanf("%254s", pStruct->uname);
     printf("\nEnter your " RED "real first name: " RESET);
-    scanf("%254s", pStruct->rfname);
+    scanf("%50s", pStruct->rfname);
     printf("\nEnter your " RED "real last name: " RESET);
-    scanf("%254s", pStruct->rlname);
+    scanf("%100s", pStruct->rlname);
     printf("\nEnter your Date of Birth: ");
-    scanf("%254s", pStruct->dob);
+    scanf("%100s", pStruct->dob);
 
     printf("\nIs this correct (Y/n)? Username: %s || Name: %s %s || DOB: %s\n", pStruct->uname, pStruct->rfname, pStruct->rlname, pStruct->dob);
     scanf("%3s", temp);
@@ -41,15 +41,15 @@ void newAccount(struct account *pStruct)
 
         if(fp == NULL)
         {
-            printf("Error in opening data/accounts.txt, try running the program again after it closes\n");
-            system("cd ..;cd ..; mkdir data");
+            printf("Error in opening ../data/accounts, try running the program again after it closes\n");
+            system("cd ..; mkdir data");
             perror("Error in opening file!");
             exit(-1);
         }
 
         fputc('\n', fp);
         fputs(pStruct->uname, fp);
-        fputc('\n', fp);
+        fputc('\n', fp);                // Make function to check for spaces 
         fputs(pStruct->rfname, fp); fputc(' ', fp); fputs(pStruct->rlname, fp);
         fputc('\n', fp);
         fputs(pStruct->dob, fp);
